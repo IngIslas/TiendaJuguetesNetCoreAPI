@@ -30,13 +30,12 @@ namespace TiendaJuguetesAPI.Repositories
             return juguete;
         }
 
-        public Juguete Insertar(Juguete Juguete)
+        public int Insertar(Juguete Juguete)
         {
             var result = _context.Add(Juguete);
-            _context.SaveChanges();
-            return result.Entity;
+            return _context.SaveChanges();
         }
-        public Juguete Actualizar(int id, Juguete juguete)
+        public int Actualizar(int id, Juguete juguete)
         {
             var _juguete = _context.Juguetes.FirstOrDefault(x => x.Id == id);
             _juguete.Nombre = juguete.Nombre;
@@ -45,8 +44,7 @@ namespace TiendaJuguetesAPI.Repositories
             _juguete.Compañia = juguete.Compañia;
             _juguete.Precio = juguete.Precio;
             _context.Update(juguete);
-            _context.SaveChanges();
-            return _juguete;
+            return _context.SaveChanges();
         }
 
         public int Eliminar(int id)

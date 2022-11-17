@@ -65,7 +65,10 @@ namespace TiendaJuguetesAPI.Controllers
                 try
                 {
                     var result = _jugueteRepository.Insertar(juguete);
-                    return Ok("Guardado exitosamente");
+                    if (result > 0)
+                        return Ok("Guardado exitosamente");
+                    else
+                        return BadRequest("Error al insertar");
                 }
                 catch (Exception e)
                 {
@@ -80,8 +83,11 @@ namespace TiendaJuguetesAPI.Controllers
         {
             try
             {
-                _jugueteRepository.Actualizar(id, juguete);
-                return Ok("Exito al actualizar");
+                var result=  _jugueteRepository.Actualizar(id, juguete);
+                if (result > 0)
+                    return Ok("Guardado exitosamente");
+                else
+                    return BadRequest("Error al actualizar");
             }
             catch (Exception e)
             {
@@ -95,8 +101,11 @@ namespace TiendaJuguetesAPI.Controllers
         {
             try
             {
-                _jugueteRepository.Eliminar(id);
-                return Ok("Exito al borrar");
+                var result= _jugueteRepository.Eliminar(id);
+                if (result > 0)
+                    return Ok("Guardado exitosamente");
+                else
+                    return BadRequest("Error al eliminar");
             }
             catch (Exception e)
             {

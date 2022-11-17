@@ -11,9 +11,9 @@ namespace TiendaJuguetesAPI.Interfaces
 
         Juguete GetById(int Id);
 
-        Juguete Insertar(Juguete Juguete);
+        int Insertar(Juguete Juguete);
 
-        Juguete Actualizar(int id, Juguete juguete);
+        int Actualizar(int id, Juguete juguete);
 
         int Eliminar(int id);
     }
