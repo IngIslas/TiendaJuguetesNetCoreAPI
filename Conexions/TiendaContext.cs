@@ -9,6 +9,7 @@ namespace TiendaJuguetesAPI.Conexions
         public TiendaContext(DbContextOptions<TiendaContext> options) : base(options) { 
         }
 
+        
         public DbSet<Juguete> Juguetes { get; set; }
     }
 }

@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TiendaJuguetesAPI.Conexions;
+using TiendaJuguetesAPI.Interfaces;
+using TiendaJuguetesAPI.Repositories;
 
 namespace TiendaJuguetesAPI
 {
@@ -27,8 +29,12 @@ namespace TiendaJuguetesAPI
         {
             services.AddControllersWithViews();
             services.AddDbContext<TiendaContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("TiendaContext"))
+                options.UseSqlServer(Configuration.GetConnectionString("TiendaContext"), builder =>
+                {
+;                    builder.EnableRetryOnFailure();
+                })
             );
+            services.AddScoped<IJugueteRepository, JugueteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
