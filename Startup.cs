@@ -35,6 +35,8 @@ namespace TiendaJuguetesAPI
                 })
             );
             services.AddScoped<IJugueteRepository, JugueteRepository>();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,13 @@ namespace TiendaJuguetesAPI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:8080");
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+            });
 
             app.UseAuthorization();
 
