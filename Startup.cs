@@ -59,7 +59,7 @@ namespace TiendaJuguetesAPI
 
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://localhost:8080");
+                builder.WithOrigins("*");
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
             });
