@@ -43,7 +43,7 @@ namespace TiendaJuguetesAPI.Repositories
             _juguete.RestriccionEdad = juguete.RestriccionEdad;
             _juguete.Compañia = juguete.Compañia;
             _juguete.Precio = juguete.Precio;
-            _context.Update(juguete);
+            _context.Update(_juguete);
             return _context.SaveChanges();
         }
 
